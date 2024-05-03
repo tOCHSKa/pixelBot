@@ -1,27 +1,44 @@
 from Capture import *
 from Move import *
+import time
 
-class FocusWindow:
-    def __init__(self):
-        self.windowTitle = None
 
-    def focusWow(self, windowTitle):
+def focusWow(windowTitle):
         window = gw.getWindowsWithTitle(windowTitle)
         try:
+            time.sleep(2)
             window[0].activate()
         except:
             window[0].minimize()
             window[0].maximize()
 
 
+class bcolors:
+    PINK = '\033[95m'
+    CYAN = '\033[96m'
+    BLEU = '\033[94m'
+    GREEN = '\033[92m'
+    RED = '\033[91m'
+    YELLOW = '\033[93m'
+    ENDC = '\033[0m'
+
+def print_menu():
+    print(f'{bcolors.CYAN}Command Menu{bcolors.ENDC}')
+    print(f'\t{bcolors.GREEN}r - Run{bcolors.ENDC}\t\tStart screen capture')
+    print(f'\t{bcolors.RED}s - Stop{bcolors.ENDC}\tStop screen capture')
+    print(f'\tq - Quit\tQuit screen capture')
+
+
+
 if __name__ == "__main__":
 
 
     screen_agent = ScreenCapture()
+    player = Move()
     
     # Print Menu
     while True:
-        # screen_agent.grab_screen()
+
         print_menu()
         user_input = input().strip().lower()
         if user_input == 'quit' or user_input == 'q':
@@ -42,11 +59,16 @@ if __name__ == "__main__":
             screen_agent.capture_process.start()
 
             targetWow = "World of Warcraft"  # Titre de la fenêtre du jeu
-            target = FocusWindow()
-            # if target.focusWow(targetWow):
-            #     print("La fenêtre du jeu a été focalisée avec succès.")
-            # else:
-            #     print("Impossible de trouver la fenêtre du jeu.")
+            target = focusWow(targetWow)
+
+            # player = Move()
+            # if screen_agent.get_Ypos() == 54.90196078431373:
+            #     player.forward_start()
+            #     time.sleep(2)
+            #     player.forward_stop()
+            # else: 
+            #     player.jump()
+
 
         elif user_input == 'stop' or user_input == 's':
             if screen_agent.capture_process is None:
@@ -58,3 +80,4 @@ if __name__ == "__main__":
             print(f'{bcolors.RED}ERROR:{bcolors.ENDC} Invalid selection.')
 
 print("Done.")
+

@@ -2,9 +2,6 @@ import pyautogui
 import time
 import pygetwindow as gw
 
-
-
-
 class Move:
     def __init__(self):
         self.KEY_RUN = 'numlock'
@@ -93,59 +90,3 @@ class Move:
     def sit(self):
         pyautogui.press(self.KEY_SIT)
 
-# with open("Capture.py") as file:
-#     exec(file.read())
-
-# if __name__ == '__main__':     
-
-
-#     controller = Move()
-#     time.sleep(2)
-
-#     while True:
-#         controller.jump()
-#         time.sleep(1)
-
-
-        # controller.forward_start()
-        # time.sleep(2)
-        # controller.left_strafe_start()
-        # time.sleep(2)
-        # controller.left_strafe_stop()
-        # time.sleep(1)
-
-        # controller.right_strafe_start()
-        # time.sleep(2)
-        # controller.right_strafe_stop()
-        # time.sleep(1)
-        # controller.forward_stop()
-        # time.sleep(1)
-
-        # controller.backward_start()
-        # time.sleep(2)
-        # controller.backward_stop()
-        # time.sleep(1)
-
-        # controller.left_start()
-        # time.sleep(2)
-        # controller.left_stop()
-        # time.sleep(1)
-
-        # controller.right_start()
-        # time.sleep(2)
-        # controller.right_stop()
-        # time.sleep(1)
-
-        # controller.sheathe_toggle()
-        # time.sleep(2)
-        # controller.sit()
-        # time.sleep(2)
-        # controller.jump()
-        # time.sleep(1)
-
-        # controller.bump_forward()
-        # controller.bump_backward()
-        # controller.bump_left()
-        # controller.bump_right()
-        # controller.bump_strafe_left()
-        # controller.bump_strafe_right()

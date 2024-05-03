@@ -71,8 +71,8 @@ class ScreenCapture:
                         )
                     
                 # Formatting the result to have XPOS and YPOS in coordinates
-                self.Xpos = "{:.2f}".format(((pixelCheck[1][2])/255)*100)
-                self.Ypos = "{:.2f}".format(((pixelCheck[2][1])/255)*100)
+                self.Xpos = round(((pixelCheck[1][2]/255)*100),2)
+                self.Ypos = round(((pixelCheck[2][1]/255)*100),2)
 
                 # Convert to integer to ensure the value is in the range 0 to 255
                 XposColor = int(pixelCheck[1][2])
@@ -103,7 +103,7 @@ class ScreenCapture:
                     )
                 
                 # Formatting the result to have %health
-                self.healthPercent = "{:.2f}".format(((pixelCheck[3][1])/255)*100)
+                self.healthPercent = round((pixelCheck[3][1]/255)*100,2)
 
                 # Convert to integer to ensure the value is in the range 0 to 255
                 self.healthPercentColor = int(pixelCheck[3][1])
@@ -122,8 +122,8 @@ class ScreenCapture:
                         cv.LINE_AA, False
                     )
                 
-                            # Formatting the result to have %health
-                self.manaPercent = "{:.2f}".format(((pixelCheck[4][0])/255)*100)
+                # Formatting the result to have %health
+                self.manaPercent = round((pixelCheck[4][0]/255)*100)
 
                 # Convert to integer to ensure the value is in the range 0 to 255
                 self.manaPercentColor = int(pixelCheck[4][0])
@@ -144,7 +144,7 @@ class ScreenCapture:
                 
                 # Formatting the result to have Facing in degrees
                 # self.facingDegrees = "{:.2f}".format(((pixelCheck[5][0])/255)*360)
-                self.facingRadian = "{:.2f}".format(math.radians((pixelCheck[5][0])/255*360))
+                self.facingRadian = round(math.radians((pixelCheck[5][0]/255)*360),2)
                 
                 # Convert to integer to ensure the value is in the range 0 to 255
                 facingDegreesColor = int(pixelCheck[5][0])
@@ -187,19 +187,19 @@ class ScreenCapture:
                     self.isCombat = True
                     
                 # Formatting the result to have XPOS and YPOS in coordinates
-                self.Xpos = "{:.2f}".format(((pixelCheck[1][2])/255)*100)
-                self.Ypos = "{:.2f}".format(((pixelCheck[2][1])/255)*100)
+                self.Xpos = round(((pixelCheck[1][2])/255)*100,2)
+                self.Ypos = round(((pixelCheck[2][1])/255)*100,2)
 
                 # Formatting the result to have %health
-                self.healthPercent = "{:.2f}".format(((pixelCheck[3][1])/255)*100)
+                self.healthPercent = round((pixelCheck[3][1]/255)*100,2)
 
                 
                 # Formatting the result to have %health
-                self.manaPercent = "{:.2f}".format(((pixelCheck[4][0])/255)*100)
+                self.manaPercent = round((pixelCheck[4][0]/255)*100,2)
 
                 # Formatting the result to have Facing in degrees
                 # self.facingDegrees = "{:.2f}".format(((pixelCheck[5][0])/255)*360)
-                self.facingRadian = "{:.2f}".format(math.radians((pixelCheck[5][0])/255*360))
+                self.facingRadian = round(math.radians((pixelCheck[5][0])/255*360),2)
 
                 # Return important values
                 return self.img, pixelCheck, self.isCombat, self.Xpos, self.Ypos, self.healthPercent, self.facingRadian, self.manaPercent
@@ -208,7 +208,7 @@ class ScreenCapture:
         with mss.mss() as sct: 
             self.img = np.array(sct.grab(self.monitor))
             pixelSquareIsCombat = self.img[0,0]
-            if pixelSquareIsCombat[0] == 255:
+            if pixelSquareIsCombat[2] == 255:
                     self.isCombat = False
             else:
                     self.isCombat = True
@@ -219,32 +219,32 @@ class ScreenCapture:
             self.img = np.array(sct.grab(self.monitor))
             pixelSquarePosX = self.img[0,1]
             # Formatting the result to have XPOS  in coordinates
-            self.Xpos = "{:.2f}".format(((pixelSquarePosX[2])/255)*100)
-        return self.Xpos  
+            self.Xpos = (pixelSquarePosX[2]/255)*100
+        return round(self.Xpos,2)
        
     def get_Ypos(self):
         with mss.mss() as sct: 
             self.img = np.array(sct.grab(self.monitor))
             pixelSquarePosY = self.img[0,2]
             # Formatting the result to have  YPOS in coordinates
-            self.Ypos = "{:.2f}".format(((pixelSquarePosY[1])/255)*100)  
-        return self.Ypos   
+            self.Ypos = (pixelSquarePosY[1]/255)*100  
+        return round(self.Ypos,2)
 
     def get_healthPercent(self):
         with mss.mss() as sct: 
             self.img = np.array(sct.grab(self.monitor))
             pixelSquareHealth = self.img[0,3]
-            # Formatting the result to have %health
-            self.healthPercent = "{:.2f}".format(((pixelSquareHealth[1])/255)*100)
-        return self.healthPercent 
+            # Calculer le pourcentage de santé
+            self.healthPercent = (pixelSquareHealth[1] / 255) * 100
+        return round(self.healthPercent,2)
     
-    def get_healthPercent(self):
+    def get_manaPercent(self):
         with mss.mss() as sct: 
             self.img = np.array(sct.grab(self.monitor))
             pixelSquareMana = self.img[0,4]
             # Formatting the result to have %mana
-            self.manaPercent = "{:.2f}".format(((pixelSquareMana[0])/255)*100)
-        return self.manaPercent
+            self.manaPercent = (pixelSquareMana[0]/255)*100
+        return round(self.manaPercent,2)
 
     def get_facingRadian(self):
         with mss.mss() as sct: 
@@ -252,23 +252,9 @@ class ScreenCapture:
             pixelSquareFacing = self.img[0,5]
             # Formatting the result to have Facing in degrees
             # self.facingDegrees = "{:.2f}".format(((pixelCheck[5][0])/255)*360)
-            self.facingRadian = "{:.2f}".format(math.radians((pixelSquareFacing[0])/255*360))
-        return self.facingRadian
-
-class bcolors:
-    PINK = '\033[95m'
-    CYAN = '\033[96m'
-    BLEU = '\033[94m'
-    GREEN = '\033[92m'
-    RED = '\033[91m'
-    YELLOW = '\033[93m'
-    ENDC = '\033[0m'
-
-def print_menu():
-    print(f'{bcolors.CYAN}Command Menu{bcolors.ENDC}')
-    print(f'\t{bcolors.GREEN}r - Run{bcolors.ENDC}\t\tStart screen capture')
-    print(f'\t{bcolors.RED}s - Stop{bcolors.ENDC}\tStop screen capture')
-    print(f'\tq - Quit\tQuit screen capture')
-
-
+            self.facingRadian = math.radians((pixelSquareFacing[0]/255)*360)
+        return round(self.facingRadian,2)
     
+# player = ScreenCapture()
+# x_pos = player.get_facingRadian()
+# print(x_pos)
