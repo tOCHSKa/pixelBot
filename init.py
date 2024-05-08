@@ -32,7 +32,6 @@ def print_menu():
 
 if __name__ == "__main__":
 
-
     screen_agent = ScreenCapture()
     player = Move()
     
@@ -60,14 +59,6 @@ if __name__ == "__main__":
 
             targetWow = "World of Warcraft"  # Titre de la fenêtre du jeu
             target = focusWow(targetWow)
-
-            # player = Move()
-            # if screen_agent.get_Ypos() == 54.90196078431373:
-            #     player.forward_start()
-            #     time.sleep(2)
-            #     player.forward_stop()
-            # else: 
-            #     player.jump()
 
 
         elif user_input == 'stop' or user_input == 's':

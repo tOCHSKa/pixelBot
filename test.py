@@ -1,29 +1,20 @@
+import pyautogui
+import time
 
-from Capture import *
+time.sleep(3)
+try:
+    while True:
+        # Clic sur la touche "L"
+        pyautogui.press('l')
+        time.sleep(0.5)  # Attendre 1.5 secondes
 
-class Character: 
-    def __init__(self) -> None:
-        self.player = ScreenCapture()
+        # Clic sur la touche "1"
+        pyautogui.press('v')
+        time.sleep(0.5)  # Attendre 1.5 secondes
 
-    #we are in combat
-    def isCombatLocal(self):
-        return self.player.get_isCombat()
-    #we are not in combat
-    #we need to rest
+        # Clic sur la touche "Échap" (Escape)
+        pyautogui.press('esc')
+        time.sleep(0.5)  # Attendre 1.5 secondesLV
 
-    def needRegen(self):
-        health_percent = int(self.player.get_healthPercent())
-        if health_percent < 30:
-            return True
-        else:
-            return False
-
-#we have target
-
-
-player = Character()
-
-test = player.isCombatLocal()
-needMana = player.needRegen()
-
-print(needMana)
+except KeyboardInterrupt:
+    print("Programme interrompu par l'utilisateur.")
