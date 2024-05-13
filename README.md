@@ -1,3 +1,5 @@
+Créer un Script d'Assistance à l'Automatisation des Combats dans World of Warcraft
+
 Préparation et Configuration
 1. Créer une Macro pour Sélectionner les Monstres
 Dans le jeu, vous pouvez créer une macro pour sélectionner des monstres :
