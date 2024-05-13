@@ -1,12 +1,14 @@
 # Script d'Assistance à l'Automatisation des Combats dans World of Warcraft
 
 ## Préparation et Configuration
-### 1. Créer une Macro pour Sélectionner les Monstres
-Dans le jeu, vous pouvez créer une macro pour sélectionner des monstres :
+### 1. Configuration des touches pour cibler 
+Dans le jeu, vous pouvez configurer une touche pour sélectionner des monstres :
 
-Sélectionner un monstre à proximité : /targetenemy (La portée est relativement courte, généralement environ 40 mètres)
+Sélectionner un monstre à proximité : (La portée est relativement courte, généralement environ 40 mètres) touche "F5"
+
+Ou alors nous pourrons sélectionner un monstre par son nom :
 Sélectionner par nom : /target Nom (Cela sélectionne les ennemis dont le nom commence par "Nom", par exemple "Nom de la Bête", "Nom du Monstre", etc.)
-Placez cette macro dans votre barre de compétences et configurez une touche rapide.
+Placez cette macro dans votre barre de compétences et configurez une touche rapide.( on ne l'utilisera pas ici)
 
 ### 2. Configurer les Raccourcis pour l'Interaction avec les Cibles et le Déplacement par Clic de Souris
 Configuration pour interagir avec les cibles : Esc -> Options -> Cibler -> Interagir avec les cibles
