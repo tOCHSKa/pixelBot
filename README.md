@@ -1,21 +1,21 @@
 # Script d'Assistance à l'Automatisation des Combats dans World of Warcraft
 
 ## Préparation et Configuration
-1. Créer une Macro pour Sélectionner les Monstres
+### 1. Créer une Macro pour Sélectionner les Monstres
 Dans le jeu, vous pouvez créer une macro pour sélectionner des monstres :
 
 Sélectionner un monstre à proximité : /targetenemy (La portée est relativement courte, généralement environ 40 mètres)
 Sélectionner par nom : /target Nom (Cela sélectionne les ennemis dont le nom commence par "Nom", par exemple "Nom de la Bête", "Nom du Monstre", etc.)
 Placez cette macro dans votre barre de compétences et configurez une touche rapide.
 
-2. Configurer les Raccourcis pour l'Interaction avec les Cibles et le Déplacement par Clic de Souris
+### 2. Configurer les Raccourcis pour l'Interaction avec les Cibles et le Déplacement par Clic de Souris
 Configuration pour interagir avec les cibles : Esc -> Options -> Cibler -> Interagir avec les cibles
 
 Déplacement par clic de souris : Esc -> Options d'Interface -> Souris -> Cochez "Déplacement par clic de souris" -> Toujours en mode de vue
 
 Cela permet, lorsque vous cliquez sur cette fonctionnalité, au personnage de se déplacer vers la cible (qui doit être vivante), et nous utiliserons cette fonctionnalité pour nous rapprocher des monstres.
 
-3. Verrouiller la Vue
+### 3. Verrouiller la Vue
 Configuration : Esc -> Options d'Interface -> Caméra -> Mode de Suivi de la Caméra : Toujours -> Vitesse de Suivi Automatique : Maximale
 
 Cela permet de garder la caméra en mode de vue à la troisième personne, alignée avec la vue du personnage. C'est important car le personnage doit faire face au monstre lorsqu'il attaque et la plupart des monstres laissent souvent des objets à ramasser devant eux.
