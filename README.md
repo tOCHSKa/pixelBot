@@ -32,6 +32,7 @@ Cela permet de garder la caméra en mode de vue à la troisième personne, align
 ## Écriture du Script
 
 1. Principes du Script
+
 Diagramme de la Séquence d'Attaque
 
 ![image](./img/algo.jpg)
