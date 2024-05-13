@@ -1,4 +1,4 @@
-# Script d'Assistance à l'Automatisation des Combats dans World of Warcraft
+# Script d'Automatisation des Combats dans World of Warcraft
 
 ## Préparation et Configuration
 ### 1. Configuration des touches pour cibler 
@@ -49,7 +49,7 @@ La distance d'attaque est-elle suffisante ?
 
 La santé est-elle en danger ?
 
-
+![image](./img/regen.jpg)
 
 Avez-vous trois points de combo pour une compétence de finition ?
 
