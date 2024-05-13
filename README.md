@@ -38,6 +38,7 @@ Diagramme de la Séquence d'Attaque
 ![image](./img/algo.jpg)
 
 2. Conditions Clés
+   
 Existe-t-il une cible ?
 
 ![image](./img/cible.jpg)
