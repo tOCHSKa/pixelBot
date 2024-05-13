@@ -55,11 +55,11 @@ Tant que (1) {
     Si (Cible Existante (pixelMatchesColor derrière le nom du panneau est-il rouge)) alors
         Si (Distance d'Attaque Suffisante (pixelMatchesColor le coup de pied est-il blanc)) alors
             Si (Trois Points de Combo Disponibles (pixelMatchesColor la troisième icône de combo du monstre est-elle colorée)) alors
-                Libérer une compétence d'attaque contre le monstre (Appuyer sur le bouton du clavier press : 2)
+                Canaliser une compétence d'attaque contre le monstre (Appuyer sur le bouton du clavier press : 3)
             Sinon
-                Libérer une compétence d'attaque contre le monstre (Appuyer sur le bouton du clavier press : 1)
+                Canaliser une compétence d'attaque contre le monstre (Appuyer sur le bouton du clavier press : r)
         Sinon
-            Se Déplacer vers le Monstre (Appuyer sur le bouton d'interaction de la cible press : j)
+            Se Déplacer vers le Monstre (Appuyer sur le bouton d'interaction de la cible press : l)
     Sinon
         Si (La bataille est-elle terminée récemment ?) alors
             Ramasser un objet (Clic droit rapide sur le cadavre du monstre : rightClick)
