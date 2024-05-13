@@ -17,6 +17,7 @@ Déplacement par clic de souris : Esc -> Options d'Interface -> Souris -> Cochez
 
 Cela permet, lorsque vous cliquez sur cette fonctionnalité, au personnage de se déplacer vers la cible (qui doit être vivante), et nous utiliserons cette fonctionnalité pour nous rapprocher des monstres.
 
+![image](./img/clicktomove.jpg)
 
 
 ### 3. Verrouiller la Vue
