@@ -6,12 +6,16 @@ Dans le jeu, vous pouvez configurer une touche pour sélectionner des monstres :
 
 Sélectionner un monstre à proximité : (La portée est relativement courte, généralement environ 40 mètres) touche "F5"
 
+![image](./img/target.jpg)
+
 Ou alors nous pourrons sélectionner un monstre par son nom :
 Sélectionner par nom : /target Nom (Cela sélectionne les ennemis dont le nom commence par "Nom", par exemple "Nom de la Bête", "Nom du Monstre", etc.)
 Placez cette macro dans votre barre de compétences et configurez une touche rapide.( on ne l'utilisera pas ici)
 
 ### 2. Configurer les Raccourcis pour l'Interaction avec les Cibles et le Déplacement par Clic de Souris
 Configuration pour interagir avec les cibles : Esc -> Options -> Cibler -> Interagir avec les cibles
+
+
 
 Déplacement par clic de souris : Esc -> Options d'Interface -> Souris -> Cochez "Déplacement par clic de souris" -> Toujours en mode de vue
 
