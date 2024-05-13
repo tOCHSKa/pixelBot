@@ -42,8 +42,7 @@ Documentation : pyautogui
 Fonctions Clés : press (simule l'appui sur une touche du clavier), rightClick (clic droit rapide), pixelMatchesColor (vérifie si la couleur d'un pixel correspond à une couleur spécifiée)
 
 4. Pseudo-code
-scss
-Copy code
+
 ```
 Tant que (1) {
     Si (Cible Existante (pixelMatchesColor derrière le nom du panneau est-il rouge)) alors
