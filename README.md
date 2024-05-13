@@ -49,7 +49,7 @@ La distance d'attaque est-elle suffisante ?
 
 La santé est-elle en danger ?
 
-
+![image](./img/regen.jpg)
 
 Avez-vous trois points de combo pour une compétence de finition ?
 
