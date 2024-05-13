@@ -1,4 +1,4 @@
-# 30分钟教你制作魔兽世界自动打怪辅助脚本
+# Script d'Assistance à l'Automatisation des Combats dans World of Warcraft
 
 Créer un Script d'Assistance à l'Automatisation des Combats dans World of Warcraft
 
