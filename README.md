@@ -15,7 +15,7 @@ Placez cette macro dans votre barre de compétences et configurez une touche rap
 ### 2. Configurer les Raccourcis pour l'Interaction avec les Cibles et le Déplacement par Clic de Souris
 Configuration pour interagir avec les cibles : Esc -> Options -> Cibler -> Interagir avec les cibles
 
-
+![image](./img/interact.jpg)
 
 Déplacement par clic de souris : Esc -> Options d'Interface -> Souris -> Cochez "Déplacement par clic de souris" -> Toujours en mode de vue
 
