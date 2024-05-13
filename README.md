@@ -24,7 +24,8 @@ Configuration : Esc -> Options d'Interface -> Caméra -> Mode de Suivi de la Cam
 
 Cela permet de garder la caméra en mode de vue à la troisième personne, alignée avec la vue du personnage. C'est important car le personnage doit faire face au monstre lorsqu'il attaque et la plupart des monstres laissent souvent des objets à ramasser devant eux.
 
-Écriture du Script
+## Écriture du Script
+
 1. Principes du Script
 Diagramme de la Séquence d'Attaque
 
