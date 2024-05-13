@@ -8,7 +8,7 @@ import multiprocessing
 import pygetwindow as gw
 
 
-class ScreenCapture:
+class WowCapture:
 
     def __init__(self,monitor=None):
         self.monitor = monitor
@@ -25,6 +25,8 @@ class ScreenCapture:
         self.isCombat = False
         self.capture_process = None
         self.img = None
+        self.unitLevel = None
+        self.classPlayer = None
 
     
     def grab_screen(self):
@@ -40,7 +42,9 @@ class ScreenCapture:
                 pixelSquareHealth = self.img[0,3]
                 pixelSquareMana = self.img[0,4]
                 pixelSquareFacing = self.img[0,5]
-                pixelCheck=[pixelSquareIsCombat,pixelSquarePosX,pixelSquarePosY,pixelSquareHealth,pixelSquareMana,pixelSquareFacing] 
+                pixelSquareUnitLevel = self.img[0,6]
+                pixelSquareClassPlayer = self.img[0,7]
+                pixelCheck=[pixelSquareIsCombat,pixelSquarePosX,pixelSquarePosY,pixelSquareHealth,pixelSquareMana,pixelSquareFacing,pixelSquareUnitLevel,pixelSquareClassPlayer] 
 
                 
                 if pixelCheck[0][2] == 255:
@@ -160,6 +164,21 @@ class ScreenCapture:
                         1,
                         cv.LINE_AA, False
                     )
+                # Formatting the result to have the target UnitLevel
+                self.unitLevel = (pixelCheck[6][2])
+                # Show the Angle on screen
+                cv.putText(
+                        small,
+                        f'TargetLevel: {str(self.unitLevel)}',
+                        (25, 200),
+                        cv.FONT_HERSHEY_COMPLEX,
+                        1,
+                        (0, 255, 0),
+                        1,
+                        cv.LINE_AA, False
+                    )
+                # Formatting the result to have the target class
+                self.classPlayer = (pixelCheck[7])
 
                 # Draw Image
                 cv.imshow("Computer Vision", small)
@@ -177,7 +196,9 @@ class ScreenCapture:
                 pixelSquareHealth = self.img[0,3]
                 pixelSquareMana = self.img[0,4]
                 pixelSquareFacing = self.img[0,5]
-                pixelCheck=[pixelSquareIsCombat,pixelSquarePosX,pixelSquarePosY,pixelSquareHealth,pixelSquareMana,pixelSquareFacing] 
+                pixelSquareUnitLevel = self.img[0,6]
+                pixelSquareClassPlayer = self.img[0,7]
+                pixelCheck=[pixelSquareIsCombat,pixelSquarePosX,pixelSquarePosY,pixelSquareHealth,pixelSquareMana,pixelSquareFacing,pixelSquareUnitLevel,pixelSquareClassPlayer]
 
                 
                 if pixelCheck[0][2] == 255:
@@ -201,11 +222,17 @@ class ScreenCapture:
                 # self.facingDegrees = "{:.2f}".format(((pixelCheck[5][0])/255)*360)
                 self.facingRadian = math.radians((pixelCheck[5][0])/255*360)
 
+                # Formatting the result to have the target UnitLevel
+                # self.unitLevel = (pixelCheck([6][0]))*255
+
+                # Formatting the result to have the target class
+                self.classPlayer = (pixelCheck[7])
+
                 # Return important values
-                return self.img, pixelCheck, self.isCombat, self.Xpos, self.Ypos, self.healthPercent, self.facingRadian, self.manaPercent
+                return self.img, pixelCheck, self.isCombat, self.Xpos, self.Ypos, self.healthPercent, self.manaPercent,self.facingRadian,self.unitLevel, self.classPlayer
                         
     def get_isCombat(self):
-        with mss.mss() as sct: 
+        with mss.mss() as sct:
             self.img = np.array(sct.grab(self.monitor))
             pixelSquareIsCombat = self.img[0,0]
             if pixelSquareIsCombat[2] == 255:
@@ -247,7 +274,7 @@ class ScreenCapture:
         return self.manaPercent
 
     def get_facingRadian(self):
-        with mss.mss() as sct: 
+        with mss.mss() as sct:
             self.img = np.array(sct.grab(self.monitor))
             pixelSquareFacing = self.img[0,5]
             # Formatting the result to have Facing in degrees
@@ -255,5 +282,38 @@ class ScreenCapture:
             self.facingRadian = math.radians((pixelSquareFacing[0]/255)*360)
             return self.facingRadian
     
-player = ScreenCapture()
-player.grab_screen()
+    def get_unitLevel(self):
+        with mss.mss() as sct:
+            self.img = np.array(sct.grab(self.monitor))
+            pixelSquareUnitLevel = self.img[0,6]
+            self.unitLevel = pixelSquareUnitLevel[2]
+        return self.unitLevel
+    
+    def get_classPlayer(self):
+        with mss.mss() as sct:
+            self.img = np.array(sct.grab(self.monitor))
+            pixelSquareClassPlayer = self.img[0,7]
+            self.classPlayer = pixelSquareClassPlayer
+            CLASS_COLORS = {
+                "druide": [10, 125, 255, 255],
+                "hunter": [115 ,212 ,171 ,255],
+                "mage": [235 ,199  ,64 ,255],
+                "paladin": [186, 140, 245, 255],
+                "priest": [255, 255, 255, 255],
+                "rogue": [105, 245, 255, 255],
+                "shaman": [222, 112,   0, 255],
+                "warlock": [237, 135, 135, 255],
+                "warrior": [110, 156, 199, 255],
+            }
+                    # Trouver la classe correspondante en comparant les valeurs de couleur
+            for class_name, color_value in CLASS_COLORS.items():
+
+                if pixelSquareClassPlayer.tolist() == color_value:
+                    return class_name
+            # Retourner None si aucune classe n'a été trouvée
+            return None, self.classPlayer
+
+            
+
+# player = WowCapture()
+# print(player.get_classPlayer())

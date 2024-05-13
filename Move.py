@@ -14,7 +14,10 @@ class Move:
         self.KEY_STRAFE_RIGHT = 'd'
         self.KEY_SHEATHE = ''
         self.KEY_SIT = ''
+        self.KEY_TARGET = 'tab'
 
+    def target(self):
+        pyautogui.keyDown(self.KEY_TARGET)
 
     def forward_start(self):
         pyautogui.keyDown(self.KEY_FORWARD)
@@ -28,19 +31,20 @@ class Move:
     def backward_stop(self):
         pyautogui.keyUp(self.KEY_BACKWARD)
 
-    def left_start(self, timer):
+    def left_start(self):
         pyautogui.keyDown(self.KEY_LEFT)
         print('Start turn left')
-        time.sleep(timer)
-        print('Stop turn left')
+        time.sleep(0.87)
         pyautogui.keyUp(self.KEY_LEFT)
+
 
     def left_stop(self):
         pyautogui.keyUp(self.KEY_LEFT)
 
-    def right_start(self,timer):
+    def right_start(self,):
         pyautogui.keyDown(self.KEY_RIGHT)
-        time.sleep(timer)
+        print('Start turn right')
+        time.sleep(0.86)
         pyautogui.keyUp(self.KEY_RIGHT)
 
     def right_stop(self):
@@ -73,12 +77,12 @@ class Move:
 
     def bump_left(self):
         pyautogui.keyDown(self.KEY_LEFT)
-        time.sleep(0.01)
+        time.sleep(0.0001)
         pyautogui.keyUp(self.KEY_LEFT)
 
     def bump_right(self):
         pyautogui.keyDown(self.KEY_RIGHT)
-        time.sleep(0.01)
+        time.sleep(0.001)
         pyautogui.keyUp(self.KEY_RIGHT)
 
     def bump_strafe_left(self):
@@ -96,57 +100,5 @@ class Move:
 
     def sit(self):
         pyautogui.press(self.KEY_SIT)
-
-
-
-#Zone with [X,Y,Rad,Boolean]
-# northShire = [[0,0,0,False],[1,1],[1,2],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
-
-rotateTime = 2
-current_angle = None
-next_angle = 6.1
-
-from Capture import *
-player = Move()
-local = ScreenCapture()
-
-# if player.get_facingRadian() > next_angle and player.get_facingRadian() - next_angle < 3.14:
-#     while player.get_facingRadian() != next_angle:
-#         player.right_start()
-#     else:
-#         player.left_start()
-
-# print(player.get_facingRadian())
-# print(player.get_Xpos())
-# print(player.get_Ypos())
-
-
-
-position = []
-firstPos = [local.get_Xpos(),local.get_Ypos(),local.get_facingRadian()]
-secondPos = [local.get_Xpos(), local.get_Ypos(), math.pi]
-position=[firstPos,secondPos]
-print(position)
-
-def timeToRotate(firstPos, secondPos):
-    totalTimeToRotate = 2
-    angle = firstPos - secondPos
-    timeToTurn = (totalTimeToRotate * angle)/(2 * math.pi)
-    return timeToTurn
-
-def rotatePlayer(timer):
-    print(timer)
-    if timer > 0 and timer <= 1:
-        # print('tourne a droite')
-        player.bump_right()
-    else:
-        # print('tourne a gauche')
-        player.bump_left()
-
-
-# nextAngle = timeToRotate(firstPos[2],secondPos[2])
-
-# time.sleep(3)
-# timer = rotatePlayer(nextAngle)
 
 

@@ -32,7 +32,7 @@ def print_menu():
 
 if __name__ == "__main__":
 
-    screen_agent = ScreenCapture()
+    screen_agent = WowCapture()
     player = Move()
     
     # Print Menu
