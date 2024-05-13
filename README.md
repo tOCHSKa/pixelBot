@@ -34,6 +34,8 @@ Conception de l'IA, à répéter par la suite
 2. Conditions Clés
 Existe-t-il une cible ?
 
+![image](./img/cible.jpg)
+
 La distance d'attaque est-elle suffisante ?
 
 La santé est-elle en danger ?
