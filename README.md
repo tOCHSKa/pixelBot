@@ -38,11 +38,19 @@ Existe-t-il une cible ?
 
 La distance d'attaque est-elle suffisante ?
 
+![image](./img/distanceok.jpg)
+
 La santé est-elle en danger ?
+
+
 
 Avez-vous trois points de combo pour une compétence de finition ?
 
+![image](./img/combo.jpg)
+
 Ramasser un objet
+
+![image](./img/loot.jpg)
 
 Le combat est-il terminé ? (Cela peut être vérifié en regardant si une cible était présente lors du dernier cycle, mais est absente lors du suivant.)
 
