@@ -43,7 +43,7 @@ Documentation : pyautogui
 
 Fonctions Clés : press (simule l'appui sur une touche du clavier), rightClick (clic droit rapide), pixelMatchesColor (vérifie si la couleur d'un pixel correspond à une couleur spécifiée)
 
-4. Pseudo-code
+### 4. Pseudo-code
 
 ```
 Tant que (1) {
@@ -66,7 +66,7 @@ Tant que (1) {
     Attendre(200 millisecondes);
 }
 ```
-6. Conclusion
+### 5. Conclusion
 Ceci est simplement une IA rudimentaire pour l'automatisation, veuillez l'utiliser avec prudence. En général, si vous ne surveillez pas le jeu, le résultat peut être quelque chose comme ceci :
 
 
