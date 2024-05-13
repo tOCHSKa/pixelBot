@@ -87,10 +87,13 @@ Tant que (1) {
 }
 ```
 ### 5. Conclusion
-Ceci est simplement une IA rudimentaire pour l'automatisation, veuillez l'utiliser avec prudence. En général, si vous ne surveillez pas le jeu, le résultat peut être quelque chose comme ceci :
+Ceci est simplement une IA rudimentaire pour l'automatisation, veuillez l'utiliser avec prudence. 
+Il se peut parfois que le résultat peut être quelque chose comme ceci :
 
 ![image](./img/badtarget.jpg)
 
 ![image](./img/dead.jpg)
+
+Il faudra ajouter un moyen de retourner vers le corps.
 
 Si cela vous intéresse, n'hésitez pas à contribuer pour améliorer le script :).
