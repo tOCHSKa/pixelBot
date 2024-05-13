@@ -40,6 +40,7 @@ La bataille est-elle terminée ? (Cela peut être vérifié en regardant si une 
 Documentation : pyautogui
 
 Fonctions Clés : press (simule l'appui sur une touche du clavier), rightClick (clic droit rapide), pixelMatchesColor (vérifie si la couleur d'un pixel correspond à une couleur spécifiée)
+
 4. Pseudo-code
 scss
 Copy code
