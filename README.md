@@ -34,7 +34,7 @@ Cela permet de garder la caméra en mode de vue à la troisième personne, align
 1. Principes du Script
 Diagramme de la Séquence d'Attaque
 
-Conception de l'IA, à répéter par la suite
+![image](./img/algo.jpg)
 
 2. Conditions Clés
 Existe-t-il une cible ?
