@@ -44,6 +44,7 @@ Fonctions Clés : press (simule l'appui sur une touche du clavier), rightClick (
 4. Pseudo-code
 scss
 Copy code
+```
 Tant que (1) {
     Si (Cible Existante (pixelMatchesColor derrière le nom du panneau est-il rouge)) alors
         Si (Distance d'Attaque Suffisante (pixelMatchesColor le coup de pied est-il blanc)) alors
@@ -63,7 +64,8 @@ Tant que (1) {
 
     Attendre(200 millisecondes);
 }
-5. Conclusion
+```
+6. Conclusion
 Ceci est simplement une IA rudimentaire pour l'automatisation, veuillez l'utiliser avec prudence. En général, si vous ne surveillez pas le jeu, le résultat peut être quelque chose comme ceci :
 
 
