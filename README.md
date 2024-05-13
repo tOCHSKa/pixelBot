@@ -89,6 +89,8 @@ Tant que (1) {
 ### 5. Conclusion
 Ceci est simplement une IA rudimentaire pour l'automatisation, veuillez l'utiliser avec prudence. En général, si vous ne surveillez pas le jeu, le résultat peut être quelque chose comme ceci :
 
+![image](./img/bad.jpg)
 
+![image](./img/dead.jpg)
 
 Si cela vous intéresse, n'hésitez pas à contribuer pour améliorer le script :).
