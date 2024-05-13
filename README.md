@@ -37,7 +37,8 @@ Avez-vous trois points de combo pour une compétence de finition ?
 
 Ramasser un objet
 
-La bataille est-elle terminée ? (Cela peut être vérifié en regardant si une cible était présente lors du dernier cycle, mais est absente lors du suivant.)
+Le combat est-il terminé ? (Cela peut être vérifié en regardant si une cible était présente lors du dernier cycle, mais est absente lors du suivant.)
+
 3. Utilisation de la bibliothèque PyAutoGUI
 Documentation : pyautogui
 
