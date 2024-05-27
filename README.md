@@ -68,24 +68,24 @@ Fonctions Clés : press (simule l'appui sur une touche du clavier), rightClick (
 ### 4. Pseudo-code
 
 ```
-Tant que (1) {
-    Si (Cible Existante (pixelMatchesColor derrière le nom  est-il rouge)) alors
-        Si (Distance d'Attaque Suffisante (pixelMatchesColor le coup est-il rose)) alors
-            Si (Trois Points de Combo Disponibles (pixelMatchesColor la troisième icône de combo du monstre est-elle colorée)) alors
-                Canaliser une compétence d'attaque contre le monstre (Appuyer sur le bouton du clavier press : 3)
-            Sinon
-                Canaliser une compétence d'attaque contre le monstre (Appuyer sur le bouton du clavier press : r)
-        Sinon
-            Se Déplacer vers le Monstre (Appuyer sur le bouton d'interaction de la cible press : l)
-    Sinon
-        Si (Le combat est-il terminé récemment ?) alors
-            Ramasser un objet (Clic droit rapide sur le cadavre du monstre : rightClick)
-            Si (La santé est-elle en danger ? (pixelMatchesColor la barre de santé est-elle verte à 50%)) alors
-                Se soigner (Se cacher pendant 20s ou utiliser un bandage, boire de l'eau)
-        Sinon
-            Choisir la prochaine cible (Appuyer sur le bouton du clavier correspondant à la macro de la cible : f5)
+While (1) {
+    If (Existing Target (pixelMatchesColor behind the name is red)) then
+        If (Sufficient Attack Distance (pixelMatchesColor the hit is pink)) then
+            If (Three Combo Points Available (pixelMatchesColor the third combo icon of the monster is colored)) then
+                Channel an attack skill against the monster (Press the keyboard button: 3)
+            Else
+                Channel an attack skill against the monster (Press the keyboard button: r)
+        Else
+            Move towards the Monster (Press the target interaction button: l)
+    Else
+        If (Has the fight ended recently?) then
+            Loot an item (Quick right-click on the monster's corpse: rightClick)
+            If (Is health in danger? (pixelMatchesColor is the health bar green at 50%)) then
+                Heal (Hide for 20s or use a bandage, drink water)
+        Else
+            Choose the next target (Press the keyboard button corresponding to the target macro: f5)
 
-    Attendre(200 millisecondes);
+    Wait(200 milliseconds);
 }
 ```
 ### 5. Conclusion
