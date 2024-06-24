@@ -65,30 +65,8 @@ Le combat est-il terminé ? (Cela peut être vérifié en regardant si une cible
 
 Fonctions Clés : press (simule l'appui sur une touche du clavier), rightClick (clic droit rapide), pixelMatchesColor (vérifie si la couleur d'un pixel correspond à une couleur spécifiée)
 
-### 4. Pseudo-code
 
-```
-While (1) {
-    If (Existing Target (pixelMatchesColor behind the name is red)) then
-        If (Sufficient Attack Distance (pixelMatchesColor the hit is pink)) then
-            If (Three Combo Points Available (pixelMatchesColor the third combo icon of the monster is colored)) then
-                Channel an attack skill against the monster (Press the keyboard button: 3)
-            Else
-                Channel an attack skill against the monster (Press the keyboard button: r)
-        Else
-            Move towards the Monster (Press the target interaction button: l)
-    Else
-        If (Has the fight ended recently?) then
-            Loot an item (Quick right-click on the monster's corpse: rightClick)
-            If (Is health in danger? (pixelMatchesColor is the health bar green at 50%)) then
-                Heal (Hide for 20s or use a bandage, drink water)
-        Else
-            Choose the next target (Press the keyboard button corresponding to the target macro: f5)
-
-    Wait(200 milliseconds);
-}
-```
-### 5. Conclusion
+### 4. Conclusion
 Ceci est simplement une IA rudimentaire pour l'automatisation, veuillez l'utiliser avec prudence. 
 Il se peut parfois que le résultat peut être quelque chose comme ceci :
 
