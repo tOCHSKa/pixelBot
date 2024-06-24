@@ -65,7 +65,7 @@ Le combat est-il terminé ? (Cela peut être vérifié en regardant si une cible
 
 Fonctions Clés : press (simule l'appui sur une touche du clavier), rightClick (clic droit rapide), pixelMatchesColor (vérifie si la couleur d'un pixel correspond à une couleur spécifiée)
 
-[![Watch the video](https://youtu.be/vt5fpE0bzSY)
+[![Watch the video](https://i.sstatic.net/Vp2cE.png)](https://youtu.be/vt5fpE0bzSY)
 
 ### 4. Conclusion
 Ceci est simplement une IA rudimentaire pour l'automatisation, veuillez l'utiliser avec prudence. 
