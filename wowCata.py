@@ -2,6 +2,8 @@
 import time
 import pyautogui
 import pygetwindow as gw
+from Capture import *
+from Move import *
 
 def focusWow(windowTitle):
         window = gw.getWindowsWithTitle(windowTitle)
@@ -24,7 +26,7 @@ KillMonster = 0
 
 #Verify if we have a target , Return True if yes
 def hasTargetEnemy():
-    return pyautogui.pixelMatchesColor(1018, 717, (209, 0, 0))
+    return pyautogui.pixelMatchesColor(1019, 714, (209, 0, 0))
 
 #Verify if we are in combat
 def isFightOver():
@@ -34,13 +36,13 @@ def isFightOver():
 #Verify if we are in melee range
 def checkAttackDistance():
     print("Verify Attack Distance")
-    return pyautogui.pixelMatchesColor(1, 1, (0, 251, 255))
+    return pyautogui.pixelMatchesColor(1, 1, (0, 255, 255))
 
 #Start Attack
 def attack():
     print("Attack The Target")
     pyautogui.press('l')
-    if pyautogui.pixelMatchesColor(1223, 925, (229, 78, 79)) : 
+    if pyautogui.pixelMatchesColor(1185, 718, (241, 83, 84)) : 
         pyautogui.press('3')
     else:
         pyautogui.press('r')
@@ -117,14 +119,29 @@ def botSequence():
             searchTarget()
 
 #Start
-while True:
-    targetWow = "World of Warcraft"  # Titre de la fenêtre du jeu
-    target = focusWow(targetWow)
-    if target:
-        botSequence()
-    else:
-        print("Game not in First Plan")
+# while True:
+#     targetWow = "World of Warcraft"  # Titre de la fenêtre du jeu
+#     target = focusWow(targetWow)
+#     if target:
+#         botSequence()
+#     else:
+#         print("Game not in First Plan")
     
-    #Pause after each action
-    pyautogui.sleep(0.3)
+#     #Pause after each action
+#     pyautogui.sleep(0.3)
 
+stats = WowCapture()
+player = Move()
+
+x = stats.get_Xpos()
+y = stats.get_Ypos()
+
+print("x = " ,x)
+print("y = ", y)
+
+targetWow = "World of Warcraft"  # Titre de la fenêtre du jeu
+target = focusWow(targetWow)
+while y > 83.00:
+
+    player.bump_forward()
+    y = stats.get_Ypos()

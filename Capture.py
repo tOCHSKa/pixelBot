@@ -2,9 +2,7 @@ import mss
 import numpy as np
 import pyautogui
 import cv2 as cv
-import time
 import math
-import multiprocessing
 import pygetwindow as gw
 
 
@@ -18,6 +16,7 @@ class WowCapture:
             self.monitor = {"top": 0, "left": 0, "width": self.w, "height": self.h}
         self.Xpos = None
         self.Ypos = None
+        self.Zpos = None
         self.healthPercent  = None
         self.manaPercent = None
         self.facingDegrees = None
@@ -36,15 +35,20 @@ class WowCapture:
             while True:
                 self.img = np.array(sct.grab(self.monitor))
                 small = cv.resize(self.img, (0, 0), fx=0.5, fy=0.5)
-                pixelSquareIsCombat = self.img[0,0]
-                pixelSquarePosX = self.img[0,1]
-                pixelSquarePosY = self.img[0,2]
-                pixelSquareHealth = self.img[0,3]
-                pixelSquareMana = self.img[0,4]
-                pixelSquareFacing = self.img[0,5]
-                pixelSquareUnitLevel = self.img[0,6]
-                pixelSquareClassPlayer = self.img[0,7]
-                pixelCheck=[pixelSquareIsCombat,pixelSquarePosX,pixelSquarePosY,pixelSquareHealth,pixelSquareMana,pixelSquareFacing,pixelSquareUnitLevel,pixelSquareClassPlayer] 
+                # Position des centres des carrés de 14x14
+                positions = [7 + 14 * i for i in range(9)]
+
+                pixelSquareIsCombat = self.img[positions[0], positions[0]]
+                pixelSquarePosX = self.img[positions[0], positions[1]]
+                pixelSquarePosY = self.img[positions[0], positions[2]]
+                pixelSquarePosZ = self.img[positions[0], positions[3]]
+                pixelSquareHealth = self.img[positions[0], positions[4]]
+                pixelSquareMana = self.img[positions[0], positions[5]]
+                pixelSquareFacing = self.img[positions[0], positions[6]]
+                pixelSquareUnitLevel = self.img[positions[0], positions[7]]
+                pixelSquareClassPlayer = self.img[positions[0], positions[8]]
+
+                pixelCheck=[pixelSquareIsCombat,pixelSquarePosX,pixelSquarePosY,pixelSquarePosZ,pixelSquareHealth,pixelSquareMana,pixelSquareFacing,pixelSquareUnitLevel,pixelSquareClassPlayer]
 
                 
                 if pixelCheck[0][2] == 255:
@@ -107,10 +111,10 @@ class WowCapture:
                     )
                 
                 # Formatting the result to have %health
-                self.healthPercent = (pixelCheck[3][1]/255)*100
+                self.healthPercent = (pixelCheck[4][1]/255)*100
 
                 # Convert to integer to ensure the value is in the range 0 to 255
-                self.healthPercentColor = int(pixelCheck[3][1])
+                self.healthPercentColor = int(pixelCheck[4][1])
 
 
                 # print(healthPercentRed)
@@ -127,10 +131,10 @@ class WowCapture:
                     )
                 
                 # Formatting the result to have %health
-                self.manaPercent = (pixelCheck[4][0]/255)*100
+                self.manaPercent = (pixelCheck[5][0]/255)*100
 
                 # Convert to integer to ensure the value is in the range 0 to 255
-                self.manaPercentColor = int(pixelCheck[4][0])
+                self.manaPercentColor = int(pixelCheck[5][0])
 
 
                 # print(ManaPercent)
@@ -148,10 +152,15 @@ class WowCapture:
                 
                 # Formatting the result to have Facing in degrees
                 # self.facingDegrees = "{:.2f}".format(((pixelCheck[5][0])/255)*360)
-                self.facingRadian = math.radians((pixelCheck[5][0]/255)*360)
+                bleu = int(pixelSquareFacing[0])
+                vert = int(pixelSquareFacing[1] * 10)
+                rouge = pixelSquareFacing[2] * 100
+                # Calcul de la valeur en degrés
+                self.facingDegrees = rouge  + vert  + bleu
+                self.facingRadian = math.radians(self.facingDegrees)
 
                 # Convert to integer to ensure the value is in the range 0 to 255
-                facingDegreesColor = int(pixelCheck[5][0])
+                facingDegreesColor = int(pixelCheck[6][0])
 
                 # Show the Angle on screen
                 cv.putText(
@@ -165,7 +174,7 @@ class WowCapture:
                         cv.LINE_AA, False
                     )
                 # Formatting the result to have the target UnitLevel
-                self.unitLevel = (pixelCheck[6][2])
+                self.unitLevel = (pixelCheck[7][2])
                 # Show the Angle on screen
                 cv.putText(
                         small,
@@ -178,7 +187,7 @@ class WowCapture:
                         cv.LINE_AA, False
                     )
                 # Formatting the result to have the target class
-                self.classPlayer = (pixelCheck[7])
+                self.classPlayer = (pixelCheck[8])
 
                 # Draw Image
                 cv.imshow("Computer Vision", small)
@@ -190,15 +199,20 @@ class WowCapture:
             
                 self.img = np.array(sct.grab(self.monitor))
                 
-                pixelSquareIsCombat = self.img[0,0]
-                pixelSquarePosX = self.img[0,1]
-                pixelSquarePosY = self.img[0,2]
-                pixelSquareHealth = self.img[0,3]
-                pixelSquareMana = self.img[0,4]
-                pixelSquareFacing = self.img[0,5]
-                pixelSquareUnitLevel = self.img[0,6]
-                pixelSquareClassPlayer = self.img[0,7]
-                pixelCheck=[pixelSquareIsCombat,pixelSquarePosX,pixelSquarePosY,pixelSquareHealth,pixelSquareMana,pixelSquareFacing,pixelSquareUnitLevel,pixelSquareClassPlayer]
+                # Position des centres des carrés de 14x14
+                positions = [7 + 14 * i for i in range(9)]
+
+                pixelSquareIsCombat = self.img[positions[0], positions[0]]
+                pixelSquarePosX = self.img[positions[0], positions[1]]
+                pixelSquarePosY = self.img[positions[0], positions[2]]
+                pixelSquarePosZ = self.img[positions[0], positions[3]]
+                pixelSquareHealth = self.img[positions[0], positions[4]]
+                pixelSquareMana = self.img[positions[0], positions[5]]
+                pixelSquareFacing = self.img[positions[0], positions[6]]
+                pixelSquareUnitLevel = self.img[positions[0], positions[7]]
+                pixelSquareClassPlayer = self.img[positions[0], positions[8]]
+
+                pixelCheck=[pixelSquareIsCombat,pixelSquarePosX,pixelSquarePosY,pixelSquarePosZ,pixelSquareHealth,pixelSquareMana,pixelSquareFacing,pixelSquareUnitLevel,pixelSquareClassPlayer]
 
                 
                 if pixelCheck[0][2] == 255:
@@ -212,15 +226,20 @@ class WowCapture:
                 self.Ypos = ((pixelCheck[2][1])/255)*100
 
                 # Formatting the result to have %health
-                self.healthPercent = (pixelCheck[3][1]/255)*100
+                self.healthPercent = (pixelCheck[4][1]/255)*100
 
                 
                 # Formatting the result to have %health
-                self.manaPercent = (pixelCheck[4][0]/255)*100
+                self.manaPercent = (pixelCheck[5][0]/255)*100
 
                 # Formatting the result to have Facing in degrees
                 # self.facingDegrees = "{:.2f}".format(((pixelCheck[5][0])/255)*360)
-                self.facingRadian = math.radians((pixelCheck[5][0])/255*360)
+                bleu = int(pixelSquareFacing[0])
+                vert = int(pixelSquareFacing[1] * 10)
+                rouge = pixelSquareFacing[2] * 100
+                # Calcul de la valeur en degrés
+                self.facingDegrees = rouge  + vert  + bleu
+                self.facingRadian = math.radians(self.facingDegrees)
 
                 # Formatting the result to have the target UnitLevel
                 # self.unitLevel = (pixelCheck([6][0]))*255
@@ -234,7 +253,7 @@ class WowCapture:
     def get_isCombat(self):
         with mss.mss() as sct:
             self.img = np.array(sct.grab(self.monitor))
-            pixelSquareIsCombat = self.img[0,0]
+            pixelSquareIsCombat = self.img[7,7]
             if pixelSquareIsCombat[2] == 255:
                     self.isCombat = False
             else:
@@ -244,7 +263,7 @@ class WowCapture:
     def get_Xpos(self):
         with mss.mss() as sct: 
             self.img = np.array(sct.grab(self.monitor))
-            pixelSquarePosX = self.img[0,1]
+            pixelSquarePosX = self.img[7,21]
             # Formatting the result to have XPOS  in coordinates
             self.Xpos = (pixelSquarePosX[2]/255)*100
         return self.Xpos
@@ -252,15 +271,23 @@ class WowCapture:
     def get_Ypos(self):
         with mss.mss() as sct: 
             self.img = np.array(sct.grab(self.monitor))
-            pixelSquarePosY = self.img[0,2]
+            pixelSquarePosY = self.img[7,35]
             # Formatting the result to have  YPOS in coordinates
             self.Ypos = (pixelSquarePosY[1]/255)*100  
         return self.Ypos
+    
+    def get_Zpos(self):
+        with mss.mss() as sct: 
+            self.img = np.array(sct.grab(self.monitor))
+            pixelSquarePosY = self.img[7,49]
+            # Formatting the result to have  YPOS in coordinates
+            self.Ypos = (pixelSquarePosY[1]/255)*100  
+        return self.Zpos
 
     def get_healthPercent(self):
         with mss.mss() as sct: 
             self.img = np.array(sct.grab(self.monitor))
-            pixelSquareHealth = self.img[0,3]
+            pixelSquareHealth = self.img[7,63]
             # Calculer le pourcentage de santé
             self.healthPercent = (pixelSquareHealth[1] / 255) * 100
         return self.healthPercent
@@ -268,7 +295,7 @@ class WowCapture:
     def get_manaPercent(self):
         with mss.mss() as sct: 
             self.img = np.array(sct.grab(self.monitor))
-            pixelSquareMana = self.img[0,4]
+            pixelSquareMana = self.img[7,77]
             # Formatting the result to have %mana
             self.manaPercent = (pixelSquareMana[0]/255)*100
         return self.manaPercent
@@ -276,23 +303,29 @@ class WowCapture:
     def get_facingRadian(self):
         with mss.mss() as sct:
             self.img = np.array(sct.grab(self.monitor))
-            pixelSquareFacing = self.img[0,5]
+            pixelSquareFacing = self.img[7,91]
             # Formatting the result to have Facing in degrees
             # self.facingDegrees = "{:.2f}".format(((pixelCheck[5][0])/255)*360)
-            self.facingRadian = math.radians((pixelSquareFacing[0]/255)*360)
+            # self.facingRadian = math.radians((pixelSquareFacing[0]/255)*360)
+            bleu = int(pixelSquareFacing[0])
+            vert = int(pixelSquareFacing[1] * 10)
+            rouge = pixelSquareFacing[2] * 100
+            # Calcul de la valeur en degrés
+            self.facingDegrees = rouge  + vert  + bleu
+            self.facingRadian = math.radians(self.facingDegrees)
             return self.facingRadian
     
     def get_unitLevel(self):
         with mss.mss() as sct:
             self.img = np.array(sct.grab(self.monitor))
-            pixelSquareUnitLevel = self.img[0,6]
+            pixelSquareUnitLevel = self.img[7,105]
             self.unitLevel = pixelSquareUnitLevel[2]
         return self.unitLevel
     
     def get_classPlayer(self):
         with mss.mss() as sct:
             self.img = np.array(sct.grab(self.monitor))
-            pixelSquareClassPlayer = self.img[0,7]
+            pixelSquareClassPlayer = self.img[7,119]
             self.classPlayer = pixelSquareClassPlayer
             CLASS_COLORS = {
                 "druide": [10, 125, 255, 255],
@@ -313,7 +346,5 @@ class WowCapture:
             # Retourner None si aucune classe n'a été trouvée
             return None, self.classPlayer
 
-            
 
-# player = WowCapture()
-# print(player.get_classPlayer())
+

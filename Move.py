@@ -13,7 +13,7 @@ class Move:
         self.KEY_STRAFE_LEFT = 'q'
         self.KEY_STRAFE_RIGHT = 'd'
         self.KEY_SHEATHE = ''
-        self.KEY_SIT = ''
+        self.KEY_SIT = 'w'
         self.KEY_TARGET = 'tab'
 
     def target(self):
@@ -33,19 +33,13 @@ class Move:
 
     def left_start(self):
         pyautogui.keyDown(self.KEY_LEFT)
-        print('Start turn left')
-        time.sleep(0.87)
-        pyautogui.keyUp(self.KEY_LEFT)
-
 
     def left_stop(self):
         pyautogui.keyUp(self.KEY_LEFT)
 
-    def right_start(self,):
+    def right_start(self):
         pyautogui.keyDown(self.KEY_RIGHT)
-        print('Start turn right')
-        time.sleep(0.86)
-        pyautogui.keyUp(self.KEY_RIGHT)
+        print("DROITE")
 
     def right_stop(self):
         pyautogui.keyUp(self.KEY_RIGHT)
